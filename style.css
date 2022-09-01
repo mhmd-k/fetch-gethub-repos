@@ -1,0 +1,130 @@
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  font-family: sans-serif;
+}
+body {
+  margin: 0;
+  background-color: #202a2f;
+  padding: 0;
+}
+li a {
+  color: #a2b0ff;
+}
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+  }
+}
+.container h2 {
+  color: white;
+  text-align: center;
+}
+
+.container .form {
+  padding: 20px;
+  display: flex;
+  gap: 10px;
+  position: relative;
+}
+
+.container .form input {
+  outline: 0;
+  border-radius: 5px;
+  padding: 5px;
+  border: none;
+  flex: 1;
+  caret-color: #009688;
+}
+.container .form span {
+  color: #ff5347;
+  font-size: 12px;
+  padding: 0 5px;
+  padding-top: 5px;
+  position: absolute;
+  left: 20px;
+  bottom: 0px;
+  opacity: 0;
+}
+.container .form span.empty {
+  opacity: 1;
+}
+.container .form button {
+  border: 0;
+  background-color: #009688;
+  color: white;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.container .repos {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding-bottom: 50px;
+}
+.container .repos .box {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color: white;
+  padding: 20px;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+}
+.container .repos .box:hover {
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 40%), 0 6px 20px 0 rgb(0 0 0 / 65%);
+}
+.container .repos .box h3 {
+  margin: 0;
+  color: #00a293;
+  text-align: center;
+}
+.container .repos .box ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 0;
+  justify-content: center;
+}
+.container .repos .box ul li {
+  padding: 0;
+  text-align: center;
+}
