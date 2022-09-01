@@ -11,6 +11,7 @@ body {
 }
 li a {
   color: #a2b0ff;
+  line-break: anywhere;
 }
 .container {
   margin-left: auto;
