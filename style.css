@@ -128,4 +128,5 @@ li a {
 .container .repos .box ul li {
   padding: 0;
   text-align: center;
+  line-break: anywhere;
 }
