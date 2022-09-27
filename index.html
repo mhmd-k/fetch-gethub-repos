@@ -4,17 +4,47 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/all.min.css" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Fetch Github Profile</title>
   </head>
   <body>
     <div class="form">
+      <i class="fa-brands fa-github"></i>
       <input type="text" name="username" placeholder="Github Username" id="" />
       <button id="get-repos">Get Repos</button>
     </div>
-    <div class="container">
-      <h2></h2>
+    <div class="container none">
+      <div class="profile">
+        <div class="refresh"><i class="fa-solid fa-arrow-left"></i></div>
+        <img src="" alt="" />
+        <h2 class="name"></h2>
+        <h2 class="link"><a href="" target="_blank"></a></h2>
+        <div class="icon">
+          <div class="stars"></div>
+          <div class="forks"></div>
+        </div>
+        <div class="info">
+          <div class="repositories">
+            <div class="num"></div>
+            REPOSITORIES
+          </div>
+          <div class="followers">
+            <div class="num"></div>
+            FOLLOWERS
+          </div>
+          <div class="following">
+            <div class="num"></div>
+            FOLLOWING
+          </div>
+        </div>
+      </div>
       <div class="repos"></div>
     </div>
     <script src="js/all.min.js"></script>
