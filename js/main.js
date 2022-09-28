@@ -35,32 +35,58 @@ function getRepos(username) {
             s += r[i].stargazers_count;
             f += r[i].forks;
             let box = document.createElement("div");
+            let boxLink = document.createElement("a");
             box.classList.add("box");
             let repoName = document.createElement("h3");
-            repoName.innerText = r[i].name;
+            repoName.innerHTML = `<i class="fa-regular fa-folder-open"></i> ${r[i].name}`;
             let ul = document.createElement("ul");
-            let visibility = document.createElement("li");
-            visibility.innerText = `visibility: ${r[i].visibility}`;
-            let watchers = document.createElement("li");
-            watchers.innerText = `watchers: ${r[i].watchers}`;
             let language = document.createElement("li");
+            // Readme
+            let p = document.createElement("p");
+            p.innerHTML = r[i].description;
+            if (p.innerHTML === "") {
+              p.innerHTML = '"no description"';
+            }
+            // end Readme
             if (r[i].language === null) {
               r[i].language = "unknown";
             }
-            language.innerText = `language: ${r[i].language}`;
+            language.innerHTML = `<i class="fa-solid fa-circle"></i> ${r[i].language}`;
+            if (r[i].language.toLowerCase() === "javascript") {
+              language.firstChild.style.color = "#f5e98b";
+            } else if (r[i].language.toLowerCase() === "css") {
+              language.firstChild.style.color = "#8877a3";
+            } else if (r[i].language.toLowerCase() === "scss") {
+              language.firstChild.style.color = "#d786ae";
+            } else if (r[i].language.toLowerCase() === "html") {
+              language.firstChild.style.color = "#eb8167";
+            } else if (r[i].language.toLowerCase() === "vue") {
+              language.firstChild.style.color = "#7acda8";
+            } else {
+              language.firstChild.style.color = "#dbdbdb";
+            }
             let forks = document.createElement("li");
-            forks.innerText = `Forks: ${r[i].forks}`;
-            let url = document.createElement("li");
-            url.innerHTML = `link: <a href="${r[i].svn_url}">${r[i].svn_url}</a>`;
+            forks.innerHTML = `<i class="fa-solid fa-code-fork"></i> ${r[i].forks}`;
+            let stars = document.createElement("li");
+            stars.innerHTML = `<i class="fa-solid fa-star"></i> ${r[i].stargazers_count}`;
+            let sizeLi = document.createElement("li");
+            let size = [...parseInt(r[i].size).toString()];
+            if (size.length > 3) {
+              size[size.length - 4] = `${size[size.length - 4]},`;
+              size = size.join("");
+            }
+            sizeLi.innerHTML = `${size} KB`;
             document.querySelector(".repos").append(box);
-            ul.append(visibility, watchers, language, forks, url);
-            box.append(repoName, ul);
+            box.append(boxLink);
+            ul.append(language, stars, forks, sizeLi);
+            boxLink.append(repoName, p, ul);
+            boxLink.setAttribute("href", r[i].svn_url);
+            boxLink.setAttribute("target", "_blanck");
           }
           // profile
           document
             .querySelector(".container .profile img")
             .setAttribute("src", `${r[0].owner.avatar_url}`);
-          console.log(r[0].owner.url);
           fetch(`https://api.github.com/users/${username}`)
             .then((url) => {
               return url.json();
