@@ -70,12 +70,7 @@ function getRepos(username) {
             let stars = document.createElement("li");
             stars.innerHTML = `<i class="fa-solid fa-star"></i> ${r[i].stargazers_count}`;
             let sizeLi = document.createElement("li");
-            let size = [...parseInt(r[i].size).toString()];
-            if (size.length > 3) {
-              size[size.length - 4] = `${size[size.length - 4]},`;
-              size = size.join("");
-            }
-            sizeLi.innerHTML = `${size} KB`;
+            comma(sizeLi, [...r[i].size.toString()]);
             document.querySelector(".repos").append(box);
             box.append(boxLink);
             ul.append(language, stars, forks, sizeLi);
@@ -127,3 +122,11 @@ const backBtn = document.querySelector(".refresh");
 backBtn.addEventListener("click", () => {
   window.location.reload();
 });
+
+function comma(sizeLi, size = []) {
+  if (size.length > 3) {
+    let s = size.splice(size.length - 3, 0, ",");
+  }
+  let s = size.join("");
+  sizeLi.innerHTML = `${s} KB`;
+}
