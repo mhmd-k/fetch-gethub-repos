@@ -1,6 +1,11 @@
 const input = document.querySelector(".form input");
 const getReposBtn = document.querySelector(".form button#get-repos");
 
+input.addEventListener("input", () => {
+  input.classList.remove("not-valid");
+  input.setAttribute("placeholder", "Github Username");
+});
+
 getReposBtn.addEventListener("click", () => {
   getRepos(input.value);
 });
@@ -21,8 +26,10 @@ function getRepos(username) {
       })
       .then((r) => {
         console.log(r);
-        if (r.length === 0) {
-          console.log("empty");
+        if (r.message === "Not Found") {
+          input.classList.add("not-valid");
+          input.value = "";
+          input.setAttribute("placeholder", "username not valid");
           return;
         } else {
           // remove form and display container
