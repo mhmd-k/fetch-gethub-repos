@@ -14,8 +14,9 @@ input.addEventListener("keydown", function (e) {
     getRepos(input.value);
   }
 });
-let s = 0;
-let f = 0;
+
+let s = 0; // stars counter
+let f = 0; // forks counter
 function getRepos(username) {
   if (input.value === "" || input.value === null) {
     console.log("empty");
@@ -25,8 +26,7 @@ function getRepos(username) {
         return respons.json();
       })
       .then((r) => {
-        console.log(r);
-        if (r.message === "Not Found") {
+        if (r.message === "Not Found" || r.length === 0) {
           input.classList.add("not-valid");
           input.value = "";
           input.setAttribute("placeholder", "username not valid");
@@ -132,8 +132,8 @@ backBtn.addEventListener("click", () => {
 
 function comma(sizeLi, size = []) {
   if (size.length > 3) {
-    let s = size.splice(size.length - 3, 0, ",");
+    size.splice(size.length - 3, 0, ",");
   }
   let s = size.join("");
-  sizeLi.innerHTML = `${s} KB`;
+  sizeLi.textContent = `${s} KB`;
 }
