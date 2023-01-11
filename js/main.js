@@ -77,7 +77,7 @@ function getRepos(username) {
             let stars = document.createElement("li");
             stars.innerHTML = `<i class="fa-solid fa-star"></i> ${r[i].stargazers_count}`;
             let sizeLi = document.createElement("li");
-            comma(sizeLi, [...r[i].size.toString()]);
+            sizeLi.textContent = niceBytes(r[i].size);
             document.querySelector(".repos").append(box);
             box.append(boxLink);
             ul.append(language, stars, forks, sizeLi);
@@ -130,10 +130,13 @@ backBtn.addEventListener("click", () => {
   window.location.reload();
 });
 
-function comma(sizeLi, size = []) {
-  if (size.length > 3) {
-    size.splice(size.length - 3, 0, ",");
+// calculating the size of the repo
+const units = ["KB", "MB", "GB", "TB"];
+function niceBytes(x) {
+  let l = 0;
+  let n = parseInt(x, 10) || 0;
+  while (n >= 1024 && ++l) {
+    n = n / 1024;
   }
-  let s = size.join("");
-  sizeLi.textContent = `${s} KB`;
+  return n.toFixed(n < 10 && l > 0 ? 1 : 0) + " " + units[l];
 }

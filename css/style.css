@@ -17,6 +17,9 @@ body {
   min-height: 100vh;
   font-family: "Oswald", sans-serif;
 }
+ul {
+  padding: 0;
+}
 .container {
   margin-left: auto;
   margin-right: auto;
@@ -282,15 +285,11 @@ body {
 .container .repos .box ul {
   list-style: none;
   display: flex;
-  flex-direction: row;
-  gap: 30px;
-  flex-wrap: nowrap;
-  padding: 0;
+  justify-content: space-between;
   padding-top: 30px;
   margin-top: auto;
 }
 .container .repos .box ul li {
-  padding: 0px;
   text-align: center;
   display: flex;
   align-items: center;
