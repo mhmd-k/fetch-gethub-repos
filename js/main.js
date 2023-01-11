@@ -135,8 +135,9 @@ const units = ["KB", "MB", "GB", "TB"];
 function niceBytes(x) {
   let l = 0;
   let n = parseInt(x, 10) || 0;
-  while (n >= 1024 && ++l) {
+  while (n >= 1024) {
+    l++;
     n = n / 1024;
   }
-  return n.toFixed(n < 10 && l > 0 ? 1 : 0) + " " + units[l];
+  return Number.parseFloat(n.toFixed(2)) + " " + units[l];
 }
